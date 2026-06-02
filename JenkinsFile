@@ -43,6 +43,31 @@ pipeline {
                 reportFiles: 'ai_execution_report.html',
                 reportName: 'AI Automation Report'
             ])
+            emailext(
+                subject: "AI Framework Build: ${currentBuild.currentResult}",
+                body: """
+                <h2>AI Automation Execution</h2>
+
+                <p><b>Job:</b> ${env.JOB_NAME}</p>
+                <p><b>Build:</b> #${env.BUILD_NUMBER}</p>
+                <p><b>Status:</b> ${currentBuild.currentResult}</p>
+
+                <p>
+                  Report:
+                  <a href="${env.BUILD_URL}AI_20Automation_20Report/">
+                  Open HTML Report
+                  </a>
+                </p>
+
+                <p>
+                  Console:
+                  <a href="${env.BUILD_URL}console">
+                  View Console Output
+                  </a>
+                </p>
+                """,
+                to: "nageshgorre007@gmail.com"
+            )
         }
     }
 }
