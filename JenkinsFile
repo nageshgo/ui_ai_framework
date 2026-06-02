@@ -2,6 +2,21 @@ pipeline {
 
     agent any
 
+    parameters {
+
+        choice(
+            name: 'BROWSER',
+            choices: ['chrome', 'firefox'],
+            description: 'Select Browser'
+        )
+
+        choice(
+            name: 'ENVIRONMENT',
+            choices: ['qa', 'uat', 'prod'],
+            description: 'Select Environment'
+        )
+    }
+
     environment {
 
         GEMINI_API_KEY = credentials('gemini-api-key')
@@ -20,8 +35,15 @@ pipeline {
 
         stage('Run Tests') {
 
+
             steps {
-                sh 'python3 run_tests.py'
+
+                sh """
+                export BROWSER=${params.BROWSER}
+                export ENVIRONMENT=${params.ENVIRONMENT}
+
+                python3 run_tests.py
+                """
             }
         }
     }
