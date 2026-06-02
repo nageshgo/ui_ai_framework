@@ -1,3 +1,4 @@
+from datetime import datetime
 import json
 import traceback
 import time
@@ -393,6 +394,79 @@ try:
     print(
         ai_metrics.get_summary()
     )
+
+    history_file = "reports/history.json"
+
+    new_entry = {
+
+        "timestamp":
+            datetime.now().strftime(
+                "%Y-%m-%d %H:%M:%S"
+            ),
+
+        "browser":
+            os.getenv(
+                "BROWSER",
+                "chrome"
+            ),
+
+        "environment":
+            os.getenv(
+                "ENVIRONMENT",
+                "qa"
+            ),
+
+        "suite":
+            os.getenv(
+                "SUITE",
+                "all"
+            ),
+
+        "pass_rate":
+            round(
+                (passed_tests / total_tests) * 100,
+                2
+            ),
+
+        "execution_time":
+            round(
+                suite_duration,
+                2
+            ),
+
+        "healing_rate":
+            ai_metrics.get_summary()[
+                "success_rate"
+            ]
+        }
+
+    history = []
+
+    if os.path.exists(
+            history_file
+    ):
+        with open(
+                history_file,
+                "r"
+        ) as file:
+            history = json.load(
+                file
+            )
+
+    history.append(
+        new_entry
+    )
+
+    with open(
+            history_file,
+            "w"
+    ) as file:
+
+        json.dump(
+            history,
+            file,
+            indent=4
+        )
 except Exception as e:
 
     print(
