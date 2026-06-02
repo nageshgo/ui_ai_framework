@@ -1,0 +1,48 @@
+pipeline {
+
+    agent any
+
+    environment {
+
+        GEMINI_API_KEY = credentials('gemini-api-key')
+        HEADLESS = 'true'
+
+    }
+
+    stages {
+
+        stage('Checkout') {
+
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Run Tests') {
+
+            steps {
+                sh 'python3 run_tests.py'
+            }
+        }
+    }
+
+    post {
+
+        always {
+
+            archiveArtifacts(
+                artifacts: 'reports/**/*',
+                fingerprint: true
+            )
+
+            publishHTML([
+                allowMissing: false,
+                alwaysLinkToLastBuild: false,
+                keepAll: true,
+                reportDir: 'reports',
+                reportFiles: 'ai_execution_report.html',
+                reportName: 'AI Automation Report'
+            ])
+        }
+    }
+}
