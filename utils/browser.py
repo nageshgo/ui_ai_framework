@@ -1,3 +1,4 @@
+import os
 
 from playwright.sync_api import sync_playwright
 
@@ -8,7 +9,10 @@ class BrowserManager:
         self.playwright = sync_playwright().start()
 
         self.browser = self.playwright.chromium.launch(
-            headless=False,
+            headless=os.getenv(
+                "HEADLESS",
+                "true"
+            ).lower() == "true",
             args=["--lang=en-US"]
         )
 
