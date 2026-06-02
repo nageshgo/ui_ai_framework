@@ -1,0 +1,16 @@
+[
+  {
+    "id": "TC001",
+    "module": "Login",
+    "priority": "High",
+    "scenario": "Logout from application and verify login page displayed"
+  },
+
+  {
+    "id": "TC002",
+    "module": "PIM",
+    "priority": "High",
+    "scenario": "Add new employee with firstname AI and lastname Tester and verify employee created successfully"
+  }
+
+]

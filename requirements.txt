@@ -1,0 +1,11 @@
+pytest
+pytest-xdist
+playwright
+requests
+langchain
+python-dotenv
+allure-pytest
+google-genai
+protobuf
+matplotlib
+reportlab
