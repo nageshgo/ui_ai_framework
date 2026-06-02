@@ -31,6 +31,45 @@ with open(
     test_scenarios = json.load(file)
 
 # ==========================================
+# SUITE FILTERING
+# ==========================================
+
+import os
+
+suite = os.getenv(
+    "SUITE",
+    "all"
+).lower()
+
+if suite != "all":
+
+    test_scenarios = [
+
+        test
+
+        for test in test_scenarios
+
+        if suite in [
+
+            tag.lower()
+
+            for tag in test.get(
+                "tags",
+                []
+            )
+        ]
+    ]
+
+print(
+    f"[SUITE] {suite}"
+)
+
+print(
+    f"[TESTS SELECTED] "
+    f"{len(test_scenarios)}"
+)
+
+# ==========================================
 # REPORT MANAGER
 # ==========================================
 

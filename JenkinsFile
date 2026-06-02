@@ -42,6 +42,7 @@ pipeline {
                 sh """
                 export BROWSER=${params.BROWSER}
                 export ENVIRONMENT=${params.ENVIRONMENT}
+                export SUITE=${params.SUITE}
 
                 python3 run_tests.py
                 """
