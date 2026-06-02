@@ -75,9 +75,15 @@ print(
 
 report = ReportManager(
 
-    browser="Chromium",
+    browser=os.getenv(
+        "BROWSER",
+        "chrome"
+    ),
 
-    environment="QA",
+    environment=os.getenv(
+        "ENVIRONMENT",
+        "qa"
+    ).upper(),
 
     framework="Playwright + Gemini AI",
 

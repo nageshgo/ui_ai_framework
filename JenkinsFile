@@ -16,6 +16,15 @@ pipeline {
             description: 'Select Environment'
         )
 
+        choice(
+            name: 'SUITE',
+            choices: [
+                'smoke',
+                'regression',
+                'all'
+            ],
+            description: 'Select Test Suite'
+)
     }
 
     environment {
