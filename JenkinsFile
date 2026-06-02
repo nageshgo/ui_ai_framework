@@ -6,7 +6,7 @@ pipeline {
 
         choice(
             name: 'BROWSER',
-            choices: ['chrome', 'firefox'],
+            choices: ['chrome', 'firefox', 'all'],
             description: 'Select Browser'
         )
 
@@ -15,6 +15,7 @@ pipeline {
             choices: ['qa', 'uat', 'prod'],
             description: 'Select Environment'
         )
+
     }
 
     environment {

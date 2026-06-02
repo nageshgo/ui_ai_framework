@@ -44,11 +44,60 @@ os.environ["BASE_URL"] = BASE_URL
 os.environ["USERNAME"] = USERNAME
 os.environ["ENVIRONMENT"] = ENVIRONMENT
 
-result = subprocess.run(
-    [
-        sys.executable,
-        "json_test_runner.py"
+browser = os.getenv(
+    "BROWSER",
+    "chrome"
+)
+
+if browser == "all":
+
+    browsers = [
+        "chrome",
+        "firefox"
     ]
+
+else:
+
+    browsers = [
+        browser
+    ]
+
+overall_result = 0
+
+for current_browser in browsers:
+
+    print(
+        "\n" + "=" * 60
+    )
+
+    print(
+        f"RUNNING TESTS ON "
+        f"{current_browser.upper()}"
+    )
+
+    print(
+        "=" * 60 + "\n"
+    )
+
+    os.environ[
+        "BROWSER"
+    ] = current_browser
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            "json_test_runner.py"
+        ]
+    )
+
+    if result.returncode != 0:
+
+        overall_result = (
+            result.returncode
+        )
+
+sys.exit(
+    overall_result
 )
 
 sys.exit(
