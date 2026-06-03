@@ -1,8 +1,32 @@
 # 🚀 AI-Powered Test Automation Framework
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)
+![Jenkins](https://img.shields.io/badge/Jenkins-D24939?style=for-the-badge&logo=jenkins&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Google Cloud](https://img.shields.io/badge/GCP-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white)
+![Gemini AI](https://img.shields.io/badge/Gemini-AI-orange?style=for-the-badge)
 
 An AI-powered self-healing test automation framework built using **Python, Playwright, Gemini AI, Jenkins, Docker, and Google Cloud Platform (GCP)**.
 
 The framework combines traditional automation with Generative AI to dynamically generate test steps, identify UI elements, perform locator healing, and provide advanced execution analytics.
+
+# 🎯 Project Highlights
+
+✅ AI Locator Generation
+
+✅ Self-Healing Automation
+
+✅ Multi-Browser Execution
+
+✅ Jenkins CI/CD Integration
+
+✅ Dockerized Jenkins
+
+✅ GCP Deployment
+
+✅ HTML & PDF Reports
+
+✅ Email Notifications
 
 ---
 
